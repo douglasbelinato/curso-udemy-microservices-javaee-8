@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>com.acme</groupId>
+		<artifactId>acme-customers</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	
+	<artifactId>acme-customers-api</artifactId>
+	<name>acme-customers-api</name>
+	<packaging>war</packaging>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.acme</groupId>
+			<artifactId>acme-customers-lib</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<!-- Java EE -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+		</dependency>
+		
+		<!-- Payara Server -->
+		<dependency>
+			<groupId>fish.payara.extras</groupId>
+			<artifactId>payara-embedded-web</artifactId>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>
