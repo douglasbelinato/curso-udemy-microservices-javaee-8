@@ -24,6 +24,8 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.acme.customers.api.services.exceptions.EmptyPayloadException;
+import com.acme.customers.api.services.exceptions.ResourceNotFoundException;
 import com.acme.customers.lib.v1.Customer;
 import com.acme.customers.lib.v1.CustomerStatus;
 import com.acme.customers.lib.v1.response.CustomerList;
@@ -142,24 +144,24 @@ public class CustomerResource {
         stmt.setString(1, id);
         ResultSet rs = stmt.executeQuery();
 
-        if (rs.next()) {
-
-            Customer customer = new Customer();
-            customer.setId(rs.getString("id"));
-            customer.setUpdatedAt(rs.getDate("updated_at"));
-            customer.setCreatedAt(rs.getDate("created_at"));
-            customer.setFirstName(rs.getString("first_name"));
-            customer.setLastName(rs.getString("last_name"));
-            customer.setEmail(rs.getString("email"));
-            customer.setDateOfBirth(rs.getDate("date_of_birth"));
-            customer.setStatus(CustomerStatus.valueOf(rs.getString("status")));
-
-            con.close();
-
-            return Response.ok(customer).build();
+        // Proper error handling
+        if (!rs.next()) {
+        	throw new ResourceNotFoundException(Customer.class.getSimpleName(), id);
         }
 
-        return Response.noContent().build();
+        Customer customer = new Customer();
+        customer.setId(rs.getString("id"));
+        customer.setUpdatedAt(rs.getDate("updated_at"));
+        customer.setCreatedAt(rs.getDate("created_at"));
+        customer.setFirstName(rs.getString("first_name"));
+        customer.setLastName(rs.getString("last_name"));
+        customer.setEmail(rs.getString("email"));
+        customer.setDateOfBirth(rs.getDate("date_of_birth"));
+        customer.setStatus(CustomerStatus.valueOf(rs.getString("status")));
+
+        con.close();
+
+        return Response.ok(customer).build();
     }
 
     /**
@@ -171,6 +173,11 @@ public class CustomerResource {
      */
     @POST
     public Response createCustomer(Customer newCustomer) throws SQLException {
+    	
+    	// Proper error handling
+    	if (newCustomer == null) {
+    		throw new EmptyPayloadException(Customer.class.getSimpleName());
+    	}
 
         Connection con = dataSource.getConnection();
         PreparedStatement stmt = con.prepareStatement("INSERT INTO customers " +
