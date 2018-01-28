@@ -14,8 +14,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<payara-micro.version>4.1.2.174</payara-micro.version>
-		<javaee.version>7.0</javaee.version>
-		
+		<javaee.version>7.0</javaee.version>		
+		<jackson.version>2.8.10</jackson.version>
 		<h2.version>1.4.196</h2.version>
 	</properties>
 
@@ -35,6 +35,13 @@
 				<artifactId>payara-embedded-web</artifactId>
 				<version>${payara-micro.version}</version>
 				<scope>provided</scope>
+			</dependency>
+			
+			<!-- Jackson as provider for JSON operations -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.jaxrs</groupId>
+                <artifactId>jackson-jaxrs-json-provider</artifactId>
+				<version>${jackson.version}</version>
 			</dependency>
 			
 			<!-- H2	Database -->

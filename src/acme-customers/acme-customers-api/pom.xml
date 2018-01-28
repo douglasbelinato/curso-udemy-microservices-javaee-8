@@ -31,6 +31,12 @@
 			<artifactId>payara-embedded-web</artifactId>
 		</dependency>
 		
+		<!-- Jackson as provider for JSON operations -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+		</dependency>
+		
 		<!-- H2	Database -->
 		<dependency>
 			<groupId>com.h2database</groupId>
