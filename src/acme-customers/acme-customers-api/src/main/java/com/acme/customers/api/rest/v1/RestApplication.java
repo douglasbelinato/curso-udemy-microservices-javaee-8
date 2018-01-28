@@ -4,7 +4,7 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 /**
- * Definindo o contexto do serviço 
+ * Defining service context
  */
 @ApplicationPath("/v1")
 public class RestApplication extends Application {
