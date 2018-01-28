@@ -6,6 +6,9 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import com.acme.customers.api.rest.v1.filters.AuthFilter;
+import com.acme.customers.api.rest.v1.filters.CorsFilter;
+import com.acme.customers.api.rest.v1.filters.LoggerInterceptor;
 import com.acme.customers.api.rest.v1.mappers.EmptyPayloadMapper;
 import com.acme.customers.api.rest.v1.mappers.ResourceNotFoundMapper;
 import com.acme.customers.api.rest.v1.providers.JacksonProvider;
@@ -37,6 +40,10 @@ public class RestApplication extends Application {
 		
 		classes.add(EmptyPayloadMapper.class);
 		classes.add(ResourceNotFoundMapper.class);
+		
+		classes.add(AuthFilter.class);
+		classes.add(CorsFilter.class);
+		classes.add(LoggerInterceptor.class);
 		
 		return classes;
 	}
