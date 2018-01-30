@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import org.glassfish.jersey.jsonp.JsonProcessingFeature;
+
 import com.acme.customers.api.rest.v1.filters.AuthFilter;
 import com.acme.customers.api.rest.v1.filters.CorsFilter;
 import com.acme.customers.api.rest.v1.filters.LoggerInterceptor;
@@ -33,9 +35,18 @@ public class RestApplication extends Application {
 	public Set<Class<?>> getClasses() {
 		Set<Class<?>> classes = new HashSet<>();
 		
-		classes.add(JacksonJsonProvider.class);
+		// ---------------------------------------------
+		// When working using Jackson
+		//classes.add(JacksonJsonProvider.class);
+		//classes.add(JacksonProvider.class);
+		// ---------------------------------------------
 		
-		classes.add(JacksonProvider.class);		
+		// ---------------------------------------------
+		// Working using JSON-P - When there's no specific need to work with Jackson, 
+		// It enables a lightweight mode to work with JSON, and it's possible to use JAX-RS directly.
+		classes.add(JsonProcessingFeature.class);
+		// ---------------------------------------------
+		
 		classes.add(CustomerResource.class);
 		
 		classes.add(EmptyPayloadMapper.class);
