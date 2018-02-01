@@ -13,9 +13,7 @@ import com.acme.customers.api.rest.v1.filters.CorsFilter;
 import com.acme.customers.api.rest.v1.filters.LoggerInterceptor;
 import com.acme.customers.api.rest.v1.mappers.EmptyPayloadMapper;
 import com.acme.customers.api.rest.v1.mappers.ResourceNotFoundMapper;
-import com.acme.customers.api.rest.v1.providers.JacksonProvider;
 import com.acme.customers.api.rest.v1.resources.CustomerResource;
-import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
 /**
  * Defining service context
