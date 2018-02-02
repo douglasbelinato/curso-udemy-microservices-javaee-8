@@ -13,14 +13,10 @@ import javax.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class HealthResource {
-	
-	/**
-	 * Endpoint to check whether the resource is available 
-	 * @return
-	 */
-	@GET
-	public Response getHealth() {
-		return Response.noContent().build();
-	}
 
+    @GET
+    public Response getHealth() {
+
+        return Response.noContent().build();
+    }
 }

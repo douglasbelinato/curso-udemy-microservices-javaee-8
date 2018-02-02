@@ -2,9 +2,7 @@ package com.acme.customers.api.services.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
 
-	private static final long serialVersionUID = -8065648060176943530L;
-	
-	private String resource;
+    private String resource;
     private String identifier;
 
     public ResourceNotFoundException(String resource, String identifier) {

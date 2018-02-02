@@ -2,9 +2,7 @@ package com.acme.customers.api.services.exceptions;
 
 public class IdMismatchException extends RuntimeException {
 
-	private static final long serialVersionUID = 713253018739209431L;
-	
-	private String pathId;
+    private String pathId;
     private String entityId;
 
     public IdMismatchException(String pathId, String entityId) {

@@ -8,10 +8,6 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 import java.util.UUID;
 
-/**
- * JAX-RS has a Exception Mapper functionality to control Exception.
- * All we need to do is to implement a Mapper for every Exception that may occur.  
- */
 @Provider
 public class ResourceNotFoundMapper implements ExceptionMapper<ResourceNotFoundException> {
 
